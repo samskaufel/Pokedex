@@ -1,6 +1,17 @@
-// browser displays "Hello World" in a pop-up window when "index.html" file is opened
-alert('Hello World');
-
-// this prints "pho" on "index.html" 
-let favoriteFood = 'pho'; 
-document.write(favoriteFood);
+let pokemonList = [
+    { 
+        name: 'Bulbasaur', 
+        height: 0.7, 
+        type: ['grass', 'poison']
+    },
+    { 
+        name: 'Ivysaur', 
+        height: 1, 
+        type: ['grass', 'poison']
+    },
+    { 
+        name: 'Venusaur', 
+        height: 2, 
+        type: ['grass', 'poison']
+    }
+];
