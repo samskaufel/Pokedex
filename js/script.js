@@ -1,3 +1,4 @@
+// pokemon objects
 let pokemonList = [
     { 
         name: 'Bulbasaur', 
