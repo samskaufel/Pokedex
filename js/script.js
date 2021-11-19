@@ -1,26 +1,40 @@
-// pokemon objects
-let pokemonList = [
-    { 
-        name: 'Bulbasaur', 
-        height: 0.7, 
-        type: ['grass', 'poison']
+// IIFE
+let pokemonRepository = (function () {
+  let pokemonList = [
+    {
+      name: 'Bulbasaur',
+      height: 0.7,
+      type: ['grass', 'poison'],
     },
-    { 
-        name: 'Ivysaur', 
-        height: 1, 
-        type: ['grass', 'poison']
+    {
+      name: 'Ivysaur',
+      height: 1,
+      type: ['grass', 'poison'],
     },
-    { 
-        name: 'Venusaur', 
-        height: 2, 
-        type: ['grass', 'poison']
-    }
-];
+    {
+      name: 'Venusaur',
+      height: 2,
+      type: ['grass', 'poison'],
+    },
+  ];
 
-// this lists the pokemon and their height, and makes a note if their height is >1.9
-for (let i = 0; i < pokemonList.length; i++) {
-    document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height})<br>`)
-    if (pokemonList[i].height >1.9){
-        document.write(`${pokemonList[i].name} - Wow, that's big!`);
-    }
-}
+  function getAll() {
+    return pokemonList;
+  }
+
+  function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
+
+  return {
+    getAll: getAll,
+    add: add,
+  };
+})();
+
+//prints pokemon list in index page
+pokemonRepository.getAll().forEach(function (pokemon) {
+  document.write(
+    `<p>${pokemon.name}<br>Height: ${pokemon.height}m<br>Type: ${pokemon.type}</p>`
+  );
+});
