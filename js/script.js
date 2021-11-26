@@ -121,6 +121,7 @@ let pokemonRepository = (function () {
     }
   });
 
+  // Closes modal if you click outside of modal
   modalContainer.addEventListener("click", (e) => {
     let target = e.target;
     if (target === modalContainer) {
