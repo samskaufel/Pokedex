@@ -146,12 +146,13 @@ let pokemonRepository = (function () {
     let value = searchPokemon.value.toLowerCase();
     let pokemonList = document.querySelectorAll("li");
     pokemonList.forEach((pokemon) => {
-      if (pokemon.innerText.toLowerCase().includes(value))
+      if (pokemon.innerText.toLowerCase().includes(value)) {
         pokemon.style.display = "block";
-      else pokemon.style.display = "none";
+      } else {
+        pokemon.style.display = "none";
+      }
     });
-    let intro = document.getElementById("intro");
-    intro.setAttribute("style", "display:none;");
+    
     let titleHeader = document.getElementById("titleHeader");
     titleHeader.classList.add("pt-5", "mt-3");
   });
