@@ -1,37 +1,37 @@
 // IIFE
 let pokemonRepository = (function () {
   let pokemonList = [];
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   function addListItem(pokemon) {
     //create li and button
-    let layoutRow = document.querySelector(".layouter");
-    let layoutContainer = document.createElement("div");
-    layoutContainer.classList.add("col-md-3");
-    let listItem = document.createElement("li");
+    let layoutRow = document.querySelector('.layouter');
+    let layoutContainer = document.createElement('div');
+    layoutContainer.classList.add('col-md-3');
+    let listItem = document.createElement('li');
     listItem.classList.add(
-      "list-group-item",
-      "list-unstyled",
-      "border-5",
-      "border-white",
-      "bg-primary",
-      "m-1",
-      "p-0"
+      'list-group-item',
+      'list-unstyled',
+      'border-5',
+      'border-white',
+      'bg-primary',
+      'm-1',
+      'p-0'
     );
-    let button = document.createElement("button");
+    let button = document.createElement('button');
     //change text of button and add class "pokemonButton"
     button.innerText = pokemon.name;
     button.classList.add(
-      "pokemonButton",
-      "show-modal",
-      "btn",
-      "btn-primary",
-      "btn-block"
+      'pokemonButton',
+      'show-modal',
+      'btn',
+      'btn-primary',
+      'btn-block'
     );
 
     //bootstrap modal:
-    button.setAttribute("data-target", "#pokemonModal");
-    button.setAttribute("data-toggle", "modal");
+    button.setAttribute('data-target', '#pokemonModal');
+    button.setAttribute('data-toggle', 'modal');
 
     //attach them to the ul/li respectively
     listItem.appendChild(button);
@@ -39,7 +39,7 @@ let pokemonRepository = (function () {
     layoutRow.appendChild(layoutContainer);
 
     //add Event Listener to Button
-    button.addEventListener("click", function () {
+    button.addEventListener('click', function () {
       showDetails(pokemon);
     });
   }
@@ -51,7 +51,7 @@ let pokemonRepository = (function () {
   }
 
   function add(pokemon) {
-    if (typeof pokemon === "object") {
+    if (typeof pokemon === 'object') {
       pokemonList.push(pokemon);
     }
   }
@@ -97,7 +97,7 @@ let pokemonRepository = (function () {
         item.types = [];
         let typPoke = details.types;
         for (let i = 0; i < typPoke.length; i++) {
-          item.types.push(" " + typPoke[i].type.name);
+          item.types.push(' ' + typPoke[i].type.name);
         }
       })
       .catch(function (e) {
@@ -108,32 +108,32 @@ let pokemonRepository = (function () {
   //Modal bootstrap
   //add new modal content
   function showModal(pokemon) {
-    let modal = document.querySelector(".modal");
-    let modalHeader = document.querySelector(".modal-header");
-    let modalTitle = document.querySelector(".modal-title");
-    let modalBody = document.querySelector(".modal-body");
+    let modal = document.querySelector('.modal');
+    let modalHeader = document.querySelector('.modal-header');
+    let modalTitle = document.querySelector('.modal-title');
+    let modalBody = document.querySelector('.modal-body');
 
-    modal.classList.add("text-center", "border-0", "mb-1");
-    modalHeader.classList.add("text-center", "bg-primary", "text-light");
-    modalBody.classList.add("pb-5");
+    modal.classList.add('text-center', 'border-0', 'mb-1');
+    modalHeader.classList.add('text-center', 'bg-primary', 'text-light');
+    modalBody.classList.add('pb-5');
 
-    modalTitle.innerHTML = "";
-    modalBody.innerHTML = "";
+    modalTitle.innerHTML = '';
+    modalBody.innerHTML = '';
 
-    let titleElement = document.createElement("h2");
+    let titleElement = document.createElement('h2');
     titleElement.innerText = pokemon.name;
 
-    let imgElement = document.createElement("img");
+    let imgElement = document.createElement('img');
     imgElement.src = pokemon.imageUrl;
-    imgElement.classList.add("img-fluid");
-    imgElement.setAttribute("style", "width:50%;");
+    imgElement.classList.add('img-fluid');
+    imgElement.setAttribute('style', 'width:50%;');
 
-    let contentElement = document.createElement("p");
+    let contentElement = document.createElement('p');
     contentElement.innerText =
-      "Height: " + pokemon.height + "\n" + "Weight: " + pokemon.weight;
+      'Height: ' + pokemon.height + '\n' + 'Weight: ' + pokemon.weight;
 
-    let typeElement = document.createElement("p");
-    typeElement.innerText = "Type: " + pokemon.types;
+    let typeElement = document.createElement('p');
+    typeElement.innerText = 'Type: ' + pokemon.types;
 
     modalTitle.appendChild(titleElement);
     modalBody.appendChild(imgElement);
@@ -141,20 +141,20 @@ let pokemonRepository = (function () {
     modalBody.appendChild(typeElement);
   }
 
-  let searchPokemon = document.querySelector("#search-input");
-  searchPokemon.addEventListener("input", () => {
+  let searchPokemon = document.querySelector('#search-input');
+  searchPokemon.addEventListener('input', () => {
     let value = searchPokemon.value.toLowerCase();
-    let pokemonList = document.querySelectorAll("li");
+    let pokemonList = document.querySelectorAll('li');
     pokemonList.forEach((pokemon) => {
       if (pokemon.innerText.toLowerCase().includes(value)) {
-        pokemon.style.display = "block";
+        pokemon.style.display = 'block';
       } else {
-        pokemon.style.display = "none";
+        pokemon.style.display = 'none';
       }
     });
     
-    let titleHeader = document.getElementById("titleHeader");
-    titleHeader.classList.add("pt-5", "mt-3");
+    let titleHeader = document.getElementById('titleHeader');
+    titleHeader.classList.add('pt-5', 'mt-3');
   });
 
   //access outside the IIFE
