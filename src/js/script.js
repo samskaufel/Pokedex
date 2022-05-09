@@ -144,7 +144,7 @@ let pokemonRepository = (function () {
   let searchPokemon = document.querySelector('#search-input');
   searchPokemon.addEventListener('input', () => {
     let value = searchPokemon.value.toLowerCase();
-    let pokemonList = document.querySelectorAll('li');
+    let pokemonList = document.querySelectorAll('.layouter');
     pokemonList.forEach((pokemon) => {
       if (pokemon.innerText.toLowerCase().includes(value)) {
         pokemon.style.display = 'block';
