@@ -1,4 +1,4 @@
-# Pokedex Simple JS App
+# Pokedex
 ## Description
 This small web application interfaces with an external Pokemon API using AJAX. 
 
